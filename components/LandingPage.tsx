@@ -61,10 +61,30 @@ export function LandingPage({ content }: { content: PageContent }) {
             <Wheel storageKey={content.storageKey} initialEntries={content.initialEntries} mode={content.mode} />
             <AdSlot />
           </div>
+          <ul className="mt-10 grid overflow-hidden rounded-2xl border-2 border-[#20201f] bg-[#20201f] text-white sm:grid-cols-3" aria-label="Product benefits">
+            {[
+              ["01", "Equal odds", "Every line receives the same chance."],
+              ["02", "Device only", "Your lists stay in this browser."],
+              ["03", "Works offline", "Return after your first visit."],
+            ].map(([number, title, body]) => (
+              <li key={number} className="border-white/15 p-5 not-last:border-b sm:not-last:border-b-0 sm:not-last:border-r">
+                <span className="text-xs font-black text-[#c8f36a]">{number}</span>
+                <strong className="ml-3 uppercase">{title}</strong>
+                <p className="mt-2 text-sm leading-6 text-white/60">{body}</p>
+              </li>
+            ))}
+          </ul>
         </div>
       </div>
       <article className="mx-auto max-w-5xl px-4 py-14 sm:px-6 sm:py-20">
-        <div className="grid gap-10 md:grid-cols-2">
+        <div className="mb-12 flex items-end justify-between gap-5 border-b-2 border-[#20201f] pb-5">
+          <div>
+            <p className="text-xs font-black uppercase tracking-[.2em] text-[#3657ff]">How it fits your day</p>
+            <h2 className="mt-2 text-4xl font-black uppercase tracking-[-.05em]">Simple by design</h2>
+          </div>
+          <span className="hidden rounded-full bg-[#ff6b45] px-4 py-2 text-xs font-black uppercase sm:block">No learning curve</span>
+        </div>
+        <div className="grid gap-12 md:grid-cols-2">
           {content.sections.map((section) => (
             <section key={section.heading}>
               <h2 className="text-3xl font-black uppercase leading-none tracking-[-.04em]">{section.heading}</h2>
