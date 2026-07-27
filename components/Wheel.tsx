@@ -136,18 +136,18 @@ export function Wheel({ storageKey, initialEntries, mode = "wheel" }: Props) {
   };
 
   return (
-    <section className="grid gap-5 rounded-3xl border border-[#e8e2d8] bg-white p-4 shadow-card md:grid-cols-[1.15fr_.85fr] md:p-7">
+    <section className="grid gap-6 rounded-[2rem] border-2 border-[#20201f] bg-[#fffdf8] p-4 shadow-card md:grid-cols-[1.15fr_.85fr] md:p-7">
       <div className="relative mx-auto aspect-square w-full max-w-[520px]">
-        <div className="absolute left-1/2 top-0 z-10 h-0 w-0 -translate-x-1/2 border-l-[14px] border-r-[14px] border-t-[30px] border-l-transparent border-r-transparent border-t-[#10213f] drop-shadow" />
+        <div className="absolute left-1/2 top-0 z-10 h-0 w-0 -translate-x-1/2 border-l-[14px] border-r-[14px] border-t-[30px] border-l-transparent border-r-transparent border-t-[#20201f] drop-shadow" />
         <canvas ref={canvasRef} className="h-full w-full rounded-full" aria-label={`Wheel with ${entries.length} entries`} />
       </div>
       <div className="flex flex-col justify-center">
         <div className="mb-2 flex items-end justify-between">
-          <label htmlFor={`${storageKey}-entries`} className="font-bold">Entries</label>
-          <span className="text-xs font-semibold text-slate-400">{entries.length} items</span>
+          <label htmlFor={`${storageKey}-entries`} className="text-sm font-black uppercase tracking-wider">Your entries</label>
+          <span className="rounded-full bg-[#c8f36a] px-3 py-1 text-xs font-black">{entries.length} items</span>
         </div>
         <textarea id={`${storageKey}-entries`} value={text} onChange={(event) => setText(event.target.value)}
-          className="min-h-52 resize-y rounded-2xl border border-slate-200 bg-slate-50 p-4 leading-7 outline-none focus:border-[#2f80ed]"
+          className="min-h-52 resize-y rounded-2xl border-2 border-[#20201f] bg-white p-4 leading-7 outline-none focus:shadow-[4px_4px_0_#3657ff]"
           placeholder={"One entry per line\nAlex\nSam\nJordan"} aria-describedby={`${storageKey}-hint`} />
         <p id={`${storageKey}-hint`} className="mt-2 text-xs text-slate-500">One entry per line. Saved on this device.</p>
         {mode === "teams" ? (
@@ -155,11 +155,11 @@ export function Wheel({ storageKey, initialEntries, mode = "wheel" }: Props) {
             <label htmlFor="team-count" className="mb-2 block text-sm font-bold">Number of teams</label>
             <input id="team-count" type="number" min="2" max="20" value={teamCount} onChange={(e) => setTeamCount(Math.max(2, Math.min(20, Number(e.target.value))))}
               className="w-full rounded-xl border border-slate-200 px-4 py-3" />
-            <button onClick={makeTeams} disabled={entries.length < 2} className="mt-3 w-full rounded-2xl bg-[#ff5c35] px-6 py-4 text-lg font-black text-white shadow-lg transition hover:bg-[#e74420] disabled:cursor-not-allowed disabled:opacity-40">Generate teams</button>
+            <button onClick={makeTeams} disabled={entries.length < 2} className="mt-3 w-full rounded-2xl border-2 border-[#20201f] bg-[#3657ff] px-6 py-4 text-lg font-black uppercase text-white shadow-[4px_4px_0_#20201f] transition hover:-translate-y-0.5 disabled:cursor-not-allowed disabled:opacity-40">Generate teams</button>
           </div>
         ) : (
           <>
-            <button onClick={spin} disabled={entries.length < 2 || spinning} className="mt-5 w-full rounded-2xl bg-[#ff5c35] px-6 py-4 text-lg font-black text-white shadow-lg transition hover:-translate-y-0.5 hover:bg-[#e74420] disabled:cursor-not-allowed disabled:opacity-40">
+            <button onClick={spin} disabled={entries.length < 2 || spinning} className="mt-5 w-full rounded-2xl border-2 border-[#20201f] bg-[#3657ff] px-6 py-4 text-lg font-black uppercase text-white shadow-[4px_4px_0_#20201f] transition hover:-translate-y-0.5 hover:bg-[#243fd2] disabled:cursor-not-allowed disabled:opacity-40">
               {spinning ? "Spinning…" : "Spin the wheel"}
             </button>
             <label className="mt-4 flex cursor-pointer items-center gap-3 text-sm font-semibold text-slate-600">
@@ -173,7 +173,7 @@ export function Wheel({ storageKey, initialEntries, mode = "wheel" }: Props) {
         <div role="dialog" aria-modal="true" aria-labelledby="winner-title" className="fixed inset-0 z-50 grid place-items-center bg-[#10213f]/60 p-4 backdrop-blur-sm" onClick={closeWinner}>
           <Confetti />
           <div className="relative w-full max-w-md rounded-3xl bg-white p-8 text-center shadow-2xl" onClick={(e) => e.stopPropagation()}>
-            <p className="text-sm font-black uppercase tracking-[.22em] text-[#ff5c35]">The wheel chose</p>
+            <p className="text-sm font-black uppercase tracking-[.22em] text-[#3657ff]">The wheel chose</p>
             <h2 id="winner-title" className="my-5 break-words text-4xl font-black">{winner}</h2>
             <button autoFocus onClick={closeWinner} className="rounded-xl bg-[#10213f] px-7 py-3 font-bold text-white">Done</button>
           </div>
