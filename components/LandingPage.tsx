@@ -61,17 +61,17 @@ export function LandingPage({ content }: { content: PageContent }) {
   return (
     <main>
       <div className="dot-grid border-b-2 border-[#20201f]">
-        <div className="mx-auto max-w-6xl px-4 pb-14 pt-12 sm:px-6 sm:pt-16">
-          <div className="mb-10 grid items-end gap-7 md:grid-cols-[1.25fr_.75fr]">
+        <div className="mx-auto max-w-6xl px-4 pb-10 pt-8 sm:px-6 sm:pb-14 sm:pt-16">
+          <div className="mb-7 grid items-end gap-5 sm:mb-10 md:grid-cols-[1.25fr_.75fr] md:gap-7">
             <div>
-              <p className="mb-4 inline-flex -rotate-1 rounded-full border-2 border-[#20201f] bg-[#c8f36a] px-4 py-2 text-xs font-black uppercase tracking-[.18em] shadow-[3px_3px_0_#20201f]">{content.eyebrow}</p>
-              <h1 className="max-w-4xl text-5xl font-black uppercase leading-[.9] tracking-[-.065em] sm:text-7xl lg:text-[5.5rem]">
+              <p className="mb-3 inline-flex -rotate-1 rounded-full border-2 border-[#20201f] bg-[#c8f36a] px-3 py-1.5 text-[10px] font-black uppercase tracking-[.16em] shadow-[3px_3px_0_#20201f] sm:mb-4 sm:px-4 sm:py-2 sm:text-xs sm:tracking-[.18em]">{content.eyebrow}</p>
+              <h1 className="max-w-4xl text-[2.65rem] font-black uppercase leading-[.88] tracking-[-.065em] sm:text-7xl lg:text-[5.5rem]">
                 {titleWords.join(" ")} <span className="text-[#3657ff]">{titleEnd}</span>
               </h1>
             </div>
-            <div className="rounded-2xl border-2 border-[#20201f] bg-white p-5 shadow-[5px_5px_0_#ff6b45]">
-              <p className="text-base font-bold leading-7 text-[#686861]">{content.intro}</p>
-              <div className="mt-4 flex flex-wrap gap-2 text-[11px] font-black uppercase tracking-wider">
+            <div className="rounded-2xl border-2 border-[#20201f] bg-white p-4 shadow-[4px_4px_0_#ff6b45] sm:p-5 sm:shadow-[5px_5px_0_#ff6b45]">
+              <p className="text-sm font-bold leading-6 text-[#686861] sm:text-base sm:leading-7">{content.intro}</p>
+              <div className="mt-3 flex flex-wrap gap-2 text-[10px] font-black uppercase tracking-wider sm:mt-4 sm:text-[11px]">
                 <span className="rounded-full bg-[#20201f] px-3 py-2 text-white">No signup</span>
                 <span className="rounded-full bg-[#c8f36a] px-3 py-2">Saved locally</span>
               </div>

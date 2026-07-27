@@ -15,9 +15,17 @@ export function Header() {
           <span className="grid h-9 w-9 place-items-center rounded-xl border-2 border-[#20201f] bg-[#3657ff] text-xl text-white shadow-[3px_3px_0_#20201f]">↻</span>
           Spin<span className="text-[#3657ff]">wheel</span>
         </Link>
-        <nav aria-label="Tools" className="flex gap-2 overflow-x-auto text-sm font-black">
+        <nav aria-label="Tools" className="hidden gap-2 text-sm font-black sm:flex">
           {links.map(([href, label]) => <Link key={href} href={href} className="whitespace-nowrap rounded-full px-3 py-2 hover:bg-[#c8f36a]">{label}</Link>)}
         </nav>
+        <details className="relative sm:hidden">
+          <summary className="cursor-pointer list-none rounded-full border-2 border-[#20201f] bg-white px-4 py-2 text-sm font-black shadow-[2px_2px_0_#20201f]">
+            Tools
+          </summary>
+          <nav aria-label="Mobile tools" className="absolute right-0 top-12 z-40 grid min-w-52 gap-1 rounded-2xl border-2 border-[#20201f] bg-white p-2 shadow-[5px_5px_0_#20201f]">
+            {links.map(([href, label]) => <Link key={href} href={href} className="rounded-xl px-4 py-3 text-sm font-black hover:bg-[#c8f36a]">{label}</Link>)}
+          </nav>
+        </details>
       </div>
     </header>
   );
