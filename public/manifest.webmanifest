@@ -1,0 +1,9 @@
+{
+  "name": "Spinwheel Random Picker",
+  "short_name": "Spinwheel",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#fffdf8",
+  "theme_color": "#fffdf8",
+  "icons": [{ "src": "/icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any maskable" }]
+}
