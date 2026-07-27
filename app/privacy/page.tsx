@@ -1,11 +1,11 @@
-import type { Metadata } from "next";
 import { LegalPage } from "@/components/LegalPage";
+import { pageMetadata } from "@/lib/metadata";
 
-export const metadata: Metadata = {
+export const metadata = pageMetadata({
   title: "Privacy Policy",
   description: "How Spinwheel handles local lists, hosting logs, and privacy rights.",
-  alternates: { canonical: "/privacy" },
-};
+  path: "/privacy",
+});
 
 export default function Page() {
   return <LegalPage eyebrow="Your data, clearly explained" title="Privacy policy" summary="Spinwheel is designed to collect as little information as possible. Wheel entries stay on your device; there are no accounts, analytics scripts, advertising trackers, or database." sections={[

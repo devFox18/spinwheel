@@ -1,11 +1,11 @@
-import type { Metadata } from "next";
 import { LandingPage } from "@/components/LandingPage";
 import { names } from "@/lib/pages";
+import { pageMetadata } from "@/lib/metadata";
 
-export const metadata: Metadata = {
+export const metadata = pageMetadata({
   title: "Random Name Picker for Classrooms",
   description: "A fair random name picker for teachers. Paste a class list, spin the wheel, and optionally remove each selected student.",
-  alternates: { canonical: "/random-name-picker" },
-  openGraph: { title: "Random Name Picker for Classrooms", description: "Pick students fairly with a simple, private classroom wheel.", url: "/random-name-picker" },
-};
+  path: "/random-name-picker",
+});
 export default function Page() { return <LandingPage content={names} />; }
+

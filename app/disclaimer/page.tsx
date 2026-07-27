@@ -1,11 +1,11 @@
-import type { Metadata } from "next";
 import { LegalPage } from "@/components/LegalPage";
+import { pageMetadata } from "@/lib/metadata";
 
-export const metadata: Metadata = {
+export const metadata = pageMetadata({
   title: "Disclaimer",
   description: "Important limitations for random wheel, team, raffle, and yes-or-no results.",
-  alternates: { canonical: "/disclaimer" },
-};
+  path: "/disclaimer",
+});
 
 export default function Page() {
   return <LegalPage eyebrow="Know what the wheel can—and cannot—do" title="Disclaimer" summary="Spinwheel is a lightweight convenience tool. It creates random outcomes but cannot determine whether a decision, competition, or use of personal information is lawful, fair, safe, or appropriate." sections={[

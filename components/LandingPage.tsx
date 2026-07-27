@@ -1,5 +1,7 @@
 import { AdSlot } from "./AdSlot";
 import { Wheel } from "./Wheel";
+import Link from "next/link";
+import { absoluteUrl } from "@/lib/site";
 
 export type PageContent = {
   eyebrow: string;
@@ -21,12 +23,30 @@ export function LandingPage({ content }: { content: PageContent }) {
       "@context": "https://schema.org",
       "@type": "WebApplication",
       name: content.title,
-      url: `https://spinwheel.app${content.path}`,
+      url: absoluteUrl(content.path),
       applicationCategory: "UtilitiesApplication",
       operatingSystem: "Any",
       offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
       description: content.intro,
+      browserRequirements: "Requires JavaScript. Works in modern web browsers.",
+      featureList: ["Equal-probability random selection", "Local list saving", "Offline support", "Responsive wheel"],
     },
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        { "@type": "ListItem", position: 1, name: "Spinwheel", item: absoluteUrl("/") },
+        ...(content.path === "/" ? [] : [{ "@type": "ListItem", position: 2, name: content.title, item: absoluteUrl(content.path) }]),
+      ],
+    },
+    ...(content.path === "/" ? [{
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      name: "Spinwheel",
+      alternateName: "Spin Wheel",
+      url: absoluteUrl("/"),
+      description: content.intro,
+    }] : []),
     {
       "@context": "https://schema.org",
       "@type": "FAQPage",
@@ -104,6 +124,19 @@ export function LandingPage({ content }: { content: PageContent }) {
             ))}
           </div>
         </section>
+        <nav aria-label="Related picker tools" className="mt-14 rounded-3xl border-2 border-[#20201f] bg-[#c8f36a] p-6 shadow-[5px_5px_0_#20201f]">
+          <p className="text-xs font-black uppercase tracking-[.18em]">Try another free tool</p>
+          <div className="mt-4 flex flex-wrap gap-3">
+            {[
+              ["/random-name-picker", "Random name picker"],
+              ["/random-team-generator", "Random team generator"],
+              ["/yes-no-wheel", "Yes or no wheel"],
+              ["/raffle-picker", "Raffle picker"],
+            ].filter(([path]) => path !== content.path).map(([path, label]) => (
+              <Link key={path} href={path} className="rounded-full border-2 border-[#20201f] bg-white px-4 py-2 text-sm font-black shadow-[2px_2px_0_#20201f] hover:-translate-y-0.5">{label}</Link>
+            ))}
+          </div>
+        </nav>
       </article>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
     </main>

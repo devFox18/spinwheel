@@ -1,11 +1,11 @@
-import type { Metadata } from "next";
 import { LegalPage } from "@/components/LegalPage";
+import { pageMetadata } from "@/lib/metadata";
 
-export const metadata: Metadata = {
+export const metadata = pageMetadata({
   title: "Terms of Use",
   description: "The terms that apply when using Spinwheel and its random picker tools.",
-  alternates: { canonical: "/terms" },
-};
+  path: "/terms",
+});
 
 export default function Page() {
   return <LegalPage eyebrow="Fair rules for a fair wheel" title="Terms of use" summary="These terms explain the permitted use of Spinwheel. By using the website, you agree to use it lawfully and accept that random tools are suitable only where a random outcome is appropriate." sections={[

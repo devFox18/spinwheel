@@ -1,13 +1,24 @@
 import type { MetadataRoute } from "next";
+import { absoluteUrl } from "@/lib/site";
 
 export const dynamic = "force-static";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  return ["", "/random-name-picker", "/random-team-generator", "/yes-no-wheel", "/raffle-picker", "/privacy", "/terms", "/disclaimer", "/cookie-policy"].map((path) => ({
-    url: `https://spinwheel.app${path}`,
-    lastModified: new Date(),
-    changeFrequency: "monthly",
-    priority: path ? 0.8 : 1,
-  }));
+  const toolRoutes = ["", "/random-name-picker", "/random-team-generator", "/yes-no-wheel", "/raffle-picker"];
+  const legalRoutes = ["/privacy", "/terms", "/disclaimer", "/cookie-policy"];
+  return [
+    ...toolRoutes.map((path) => ({
+      url: absoluteUrl(path || "/"),
+      lastModified: new Date("2026-07-27"),
+      changeFrequency: "monthly" as const,
+      priority: path ? 0.9 : 1,
+    })),
+    ...legalRoutes.map((path) => ({
+      url: absoluteUrl(path),
+      lastModified: new Date("2026-07-27"),
+      changeFrequency: "yearly" as const,
+      priority: 0.3,
+    })),
+  ];
 }
 

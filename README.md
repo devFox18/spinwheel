@@ -23,10 +23,22 @@ The site uses `output: "export"`, so the static build is written to `out/`.
 
 Import the GitHub repository in Vercel. Vercel detects Next.js automatically; no environment variables or backend services are required.
 
-## Before using a custom domain
+For stable canonical URLs, set this production environment variable in Vercel:
 
-Replace `https://spinwheel.app` in `app/layout.tsx`, `app/sitemap.ts`, `app/robots.ts`, and `components/LandingPage.tsx` with the production origin.
+```text
+NEXT_PUBLIC_SITE_URL=https://your-domain.example
+```
+
+Without it, the build automatically uses Vercel's production project URL.
+
+## Search engine launch checklist
+
+1. Add the production domain to Google Search Console.
+2. Submit `/sitemap.xml`.
+3. Inspect the five picker URLs and request indexing.
+4. Keep canonical domains consistent when a custom domain is attached.
 
 ## Privacy
 
 Lists are stored only in the browser using `localStorage`. There is no database, login, analytics, or cookie banner logic.
+

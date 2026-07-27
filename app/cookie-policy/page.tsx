@@ -1,11 +1,11 @@
-import type { Metadata } from "next";
 import { LegalPage } from "@/components/LegalPage";
+import { pageMetadata } from "@/lib/metadata";
 
-export const metadata: Metadata = {
+export const metadata = pageMetadata({
   title: "Cookie and Local Storage Policy",
   description: "A clear explanation of Spinwheel browser storage, offline cache, and absence of tracking cookies.",
-  alternates: { canonical: "/cookie-policy" },
-};
+  path: "/cookie-policy",
+});
 
 export default function Page() {
   return <LegalPage eyebrow="No tracking-cookie maze" title="Cookies & storage" summary="Spinwheel does not use advertising or analytics cookies. It uses browser storage only to remember the lists you ask it to save and to make the static site available offline after your first visit." sections={[

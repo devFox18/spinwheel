@@ -1,5 +1,5 @@
-const CACHE = "spinwheel-v1";
-const APP_SHELL = ["/", "/random-name-picker/", "/random-team-generator/", "/yes-no-wheel/", "/raffle-picker/", "/privacy/", "/terms/", "/disclaimer/", "/cookie-policy/", "/manifest.webmanifest", "/icon.svg"];
+const CACHE = "spinwheel-v2";
+const APP_SHELL = ["/", "/random-name-picker/", "/random-team-generator/", "/yes-no-wheel/", "/raffle-picker/", "/privacy/", "/terms/", "/disclaimer/", "/cookie-policy/", "/manifest.webmanifest", "/icon.svg", "/og.png"];
 self.addEventListener("install", (event) => event.waitUntil(caches.open(CACHE).then((cache) => cache.addAll(APP_SHELL))));
 self.addEventListener("activate", (event) => event.waitUntil(caches.keys().then((keys) => Promise.all(keys.filter((key) => key !== CACHE).map((key) => caches.delete(key))))));
 self.addEventListener("fetch", (event) => {
